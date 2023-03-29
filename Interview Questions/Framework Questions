@@ -1,0 +1,51 @@
+1.	What is the Design pattern you have used in writing tests in the Framework?
+A.	We used page object design pattern. And page factory which is a subset of page object mechanism.
+
+2.	How are reusable utilities handled within the framework?
+A.	For all Selenium related methods we are driving through 1 class called "Abstract Component" and inherit that class
+	in all the page object files.
+	Test related reusable methods are written in "Base Test" class and inherited to all the test classes.
+
+3.	Where did you use inheritance OOPS concepts in your framework?
+A.	We have some reusable classes where we are using in every page class and test class through inheritance mechanism
+	and override methods with different parameters.
+	
+4.	How do you drive external data from external files in the framework?
+A.	We drive data using json files to maintain multiple data sets for repetitive testing. With the help testNg data 
+	provider we pass data to the test cases.
+	We created an utility to convert json file to HashMap using jackson Databind dependency inside we use a class called
+	"ObjectMapper"
+	
+5.	Did you use interfaces in the framework? What is the scope of it?
+A.	We're using ITestListener interface to implement methods that can be used as generic for tests
+	We use WebDriver interface
+	
+6.	How are you achieving encapsulation in the framework?
+A.	Encapsulation means wrapping of fields and methods in a class. This will restrict other class modifying the code
+	or data of the fields
+	
+7.	Does your Framework support parallel runs? How are you providing thread safe code?
+A.	To run the tests in parallel we are setting up the "parallel" attribute to "tests". So that all the tests can 
+	execute parallel. We can also execute the methods parallel by replacing "tests" with "methods". As each test starts
+	in its own thread it would be thread safe. With the help of "ThreadLocal" Class we achieved the synchronization
+	between the methods in a test
+	
+8.	Do you have static keywords in the framework? if so, its usage?
+A.	static cannot be used in parallel tests. For eg: having static keyword for initialization is not correct
+
+9.	How are you sending global properties to your test at runtime?
+A.	Using Maven command line we can send parameters to the test.
+
+10.	What is the mechanism you use to run only selected set of tests inside the framework?
+A.	By using testNg groups attribute we can run selected tests. Creating a separate XML for this group would make it
+	better for execution
+
+11.	How are you handling flaky tests in framework?
+A.	By using the IRetryAnalyzer we can handle the flakiness of a test. this has to be attached to the expected flaky 
+	tests
+	
+12.	Does your framework take screenshots on test failure?
+A.	Using testNg listeners we handle the screenshot on failure.
+
+13.	Explain framework architecture?
+A.	
